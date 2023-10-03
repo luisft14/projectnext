@@ -1,8 +1,9 @@
 "use client"
 import React, { useEffect, useState } from 'react'
-import {GET}  from "@/app/api/users/route";
+import {GET}  from "@/app/api/products/route";
 import Table from '@/components/fabricaComponents/Table';
-function Users() {
+
+function Products() {
 
   const [users, setUsers] = useState([]);
   const [columns, setColums] = useState([]);
@@ -20,10 +21,8 @@ function Users() {
         
         let newItem = {
           id:item.id,
-          username:item.username,
-          email:item.email,
-          name:item.name.firstname,
-          lastname:item.name.lastname,
+          title:item.title,
+          price:item.price,
         }
 
         return newItem;
@@ -34,10 +33,8 @@ function Users() {
     async function getColumns(){
       let columns = [
         {value:'id',name:'Id'},
-        {value:'username',name:'User Name'},
-        {value:'email',name:'Email'},
-        {value:'name',name:'Firs Name'},
-        {value:'lastname',name:'Last Name'},
+        {value:'title',name:'Title'},
+        {value:'price',name:'Price'},
       ];
       setColums(columns);
     }
@@ -46,17 +43,13 @@ function Users() {
     getColumns();
 
   }, [])
-
-  function openModalAddUser(event){
-    console.log("eventAdd",event);
-  }
   
   return (
     <div>
-        <h4 className='text-white'>Users</h4>
-        <Table title={'Users'} data={users} columns={columns} actions={actions} add={openModalAddUser}></Table>
+        <p className='text-white'>Products</p>
+        <Table title={'Products'} data={users} columns={columns} actions={actions}></Table>
     </div>
   )
 }
 
-export default Users
+export default Products

@@ -1,7 +1,12 @@
 "use client";
 import React from "react";
 
-function Table({ title, data, columns, actions }) {
+function Table({ title, data, columns, actions,add}) {
+
+    function addItem(){
+        add(true);
+    }
+
   return (
     <section className="py-1 bg-blueGray-50">
       <div className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-24">
@@ -9,14 +14,15 @@ function Table({ title, data, columns, actions }) {
           <div className="rounded-t mb-0 px-4 py-3 border-0">
             <div className="flex flex-wrap items-center">
               <div className="relative w-full px-4 max-w-full flex-grow flex-1">
-                <h3 className="font-semibold text-base text-blueGray-700">
+                <h2 className="font-semibold text-base text-blueGray-700">
                   {title}
-                </h3>
+                </h2>
               </div>
               <div className="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
                 <button
                   className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={()=>addItem()}
                 >
                   Add {title}
                 </button>
@@ -63,43 +69,32 @@ function Table({ title, data, columns, actions }) {
                         {element[item.value]}
                       </td>
                     ))}
+                    <td>
+                      <div
+                        className="inline-flex rounded-md shadow-sm"
+                        role="group"
+                      >
+                        <button
+                          type="button"
+                          className="px-1 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                          Details
+                        </button>
+                        <button
+                          type="button"
+                          className="ml-2 px-1 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
                   </tr>
-
                 ))}
-                
               </tbody>
             </table>
           </div>
         </div>
       </div>
-      <footer className="relative pt-8 pb-6 mt-16">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center md:justify-between justify-center">
-            <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-              <div className="text-sm text-blueGray-500 font-semibold py-1">
-                Made with{" "}
-                <a
-                  href="https://www.creative-tim.com/product/notus-js"
-                  className="text-blueGray-500 hover:text-gray-800"
-                  target="_blank"
-                >
-                  Notus JS
-                </a>{" "}
-                by{" "}
-                <a
-                  href="https://www.creative-tim.com"
-                  className="text-blueGray-500 hover:text-blueGray-800"
-                  target="_blank"
-                >
-                  {" "}
-                  Creative Tim
-                </a>
-                .
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
     </section>
   );
 }
