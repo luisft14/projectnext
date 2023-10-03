@@ -26,7 +26,7 @@ function Login() {
     //let data = JSON.parse(data_login);
     if(data_login){
       localStorage.setItem('token',data_login.token);
-      //router.push();
+      router.push("/home");
     }else{
       return alert("incorrect username or password");
     }
