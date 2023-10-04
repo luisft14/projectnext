@@ -1,10 +1,19 @@
 "use client";
 import React from "react";
 
-function Table({ title, data, columns, actions,add}) {
+function Table({ title, data, columns, actions,add,show,deleteI,reload}) {
 
     function addItem(){
         add(true);
+    }
+    function showDetails(id){
+      show(id);
+    }
+    function deleteItem(id){
+      deleteI(id);
+    }
+    function reloadData(){
+      reload();
     }
 
   return (
@@ -29,6 +38,7 @@ function Table({ title, data, columns, actions,add}) {
                 <button
                   className="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
+                  onClick={()=>reloadData()}
                 >
                   Reload {title}
                 </button>
@@ -59,8 +69,8 @@ function Table({ title, data, columns, actions,add}) {
               </thead>
 
               <tbody>
-                {data?.map((element) => (
-                  <tr key={element.id}>
+                {data?.map((element,index) => (
+                  <tr key={index}>
                     {columns.map((item, index) => (
                       <td
                         key={index}
@@ -77,12 +87,14 @@ function Table({ title, data, columns, actions,add}) {
                         <button
                           type="button"
                           className="px-1 py-2 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                          onClick={()=>showDetails(element.id)}
                         >
                           Details
                         </button>
                         <button
                           type="button"
                           className="ml-2 px-1 py-2 text-xs font-medium text-center text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
+                          onClick={()=>deleteItem(element.id)}
                         >
                           Delete
                         </button>

@@ -2,11 +2,17 @@
 import React, { useEffect, useState } from 'react'
 import {GET}  from "@/app/api/users/route";
 import Table from '@/components/fabricaComponents/Table';
+import {useRouter} from "next/navigation"
+import { useUser } from '@/context/contextUsers';
+
 function Users() {
+
+  const router = useRouter();
 
   const [users, setUsers] = useState([]);
   const [columns, setColums] = useState([]);
   const [actions, setActions] = useState(['Details','Edit','Delete']);
+  const {dataUsers} = useUser();
 
   useEffect(() => {
 
@@ -28,7 +34,20 @@ function Users() {
 
         return newItem;
       })
+
+      dataUsers.map(item =>{
+        let newItem = {
+          id:item.id,
+          username:item.username,
+          email:item.email,
+          name:item.name.firstname,
+          lastname:item.name.lastname,
+        }
+        filterData.push(newItem);
+      })
+
       setUsers(filterData);
+      
     }
 
     async function getColumns(){
@@ -44,17 +63,62 @@ function Users() {
 
     getData();
     getColumns();
+    console.log("data context en page ",dataUsers);
 
   }, [])
 
-  function openModalAddUser(event){
-    console.log("eventAdd",event);
+  function openAddUser(event){
+   
+    router.push("/home/users/:id");
+  }
+
+  function openShowUser(event){
+   
+    router.push("/home/users/"+event);
+  }
+
+  function deleteUser(event){
+    console.log("delete ",event);
+    //router.push("/home/users/"+event);
+    const usersFilter = users.filter(item => item.id != event);
+    setUsers(usersFilter);
+  }
+
+  async function reloadUsers(event){
+    let data = await GET();
+
+    let filterData = [];
+
+    filterData = data.map(item=>{
+      
+      let newItem = {
+        id:item.id,
+        username:item.username,
+        email:item.email,
+        name:item.name.firstname,
+        lastname:item.name.lastname,
+      }
+
+      return newItem;
+    })
+
+    dataUsers.map(item =>{
+      let newItem = {
+        id:item.id,
+        username:item.username,
+        email:item.email,
+        name:item.name.firstname,
+        lastname:item.name.lastname,
+      }
+      filterData.push(newItem);
+    })
+
+    setUsers(filterData);
   }
   
   return (
     <div>
-        <h4 className='text-white'>Users</h4>
-        <Table title={'Users'} data={users} columns={columns} actions={actions} add={openModalAddUser}></Table>
+        <Table title={'Users'} data={users} columns={columns} actions={actions} add={openAddUser} show={openShowUser} deleteI={deleteUser} reload={reloadUsers}></Table>
     </div>
   )
 }

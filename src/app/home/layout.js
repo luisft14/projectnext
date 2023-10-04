@@ -1,6 +1,7 @@
 import '@/app/globals.css'
 import { Inter } from 'next/font/google'
 import { TokenProvider } from '@/context/contextToken'
+import { UserProvider } from '@/context/contextUsers'
 import Nav from "@/components/simpleComponents/Nav";
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,8 +15,10 @@ export default function HomeLayout({ children }) {
   return (
       <>
        <TokenProvider>
+        <UserProvider>
         <Nav></Nav>
-       {children}
+          {children}
+        </UserProvider>
         </TokenProvider> 
       </>
   )
