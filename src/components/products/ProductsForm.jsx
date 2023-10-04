@@ -7,7 +7,6 @@ function ProductsForm({ title, newProduct, data, updateProduct }) {
 
   useEffect(() => {
     setDataForm(data);
-    console.log("dataForm", dataForm);
   }, [data]);
 
   const handleChange = ({ target: { name, value } }) => {

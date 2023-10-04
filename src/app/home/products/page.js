@@ -73,7 +73,6 @@ function Products() {
   }
 
   function deleteProduct(event){
-    console.log("delete ",event);
     //router.push("/home/users/"+event);
     const productsFilter = products.filter(item => item.id != event);
     setProducts(productsFilter);

@@ -7,7 +7,6 @@ function DetailsUserForm({ title, newUser, data }) {
 
   useEffect(() => {
     setDataForm(data);
-    console.log("dataForm", dataForm);
   }, [data]);
 
   const handleChange = ({ target: { name, value } }) => {

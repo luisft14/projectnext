@@ -43,7 +43,6 @@ function DetailsUser({ params }) {
       }
 
       setFormData(dataFilter);
-      console.log("usuario encontrado ",dataUser);
     }
 
    
@@ -82,7 +81,6 @@ function DetailsUser({ params }) {
     }
     addUser(dataUser);
 
-    console.log("agregado",dataPost);
     router.push("/home/users");
 
   }

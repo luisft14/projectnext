@@ -17,43 +17,16 @@ function Login() {
       username:userName,
       password: password
     }
-    // let payload = {
-    //   username: "johnd",
-    //   password: "m38rmF$"
-    // }
+    
 
     const data_login = await POST(payload);
-    //let data = JSON.parse(data_login);
+    
     if(data_login){
       localStorage.setItem('token',data_login.token);
       router.push("/home");
     }else{
       return alert("incorrect username or password");
     }
-    console.log("peticion realizada",data_login);
-    // fetch('https://fakestoreapi.com/auth/login',{
-    //     method:'POST',
-    //     body:JSON.stringify({
-    //         username: "johnd",
-    //         password: "m38rmF$"
-    //     })
-    // })
-    //     .then(res=>res.json())
-    //     .then(json=>console.log(json))
-
-  // fetch('https://fakestoreapi.com/auth/login', {
-  //   method: "POST", // or 'PUT'
-  //   body: JSON.stringify(payload), // data can be `string` or {object}!
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //   },
-  // })
-  //   .then((res) => res.json())
-  //   .catch((error) => console.error("Error:", error))
-  //   .then((response) => console.log("Success:", response));
-
-    // console.log("data",data);
-
             
   }
 

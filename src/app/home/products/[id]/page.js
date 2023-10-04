@@ -25,7 +25,6 @@ function DetailsProduct({ params }) {
     async function getProduct(){
       const dataProduct = await  GETBYID(params.id);
       setFormData(dataProduct);
-      console.log("producto encontrado ",dataProduct);
     }
 
    
@@ -53,19 +52,16 @@ function DetailsProduct({ params }) {
     
         addProduct(dataProduct);
     
-        console.log("agregado",dataPost);
         router.push("/home/products");
     }
 
   }
 
   async function updateProduct(data){
-    console.log("data update product",data);
     const dataUpdate =  await UPDATE(data);
     if(!dataUpdate){
         alert("Failed update product");
     }else{
-        console.log("update",dataUpdate);
         //putProduct(dataUpdate);
         router.push("/home/products");
     }

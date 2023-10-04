@@ -64,7 +64,6 @@ function Users() {
 
     getData();
     getColumns();
-    console.log("data context en page ",dataUsers);
 
   }, [])
 
@@ -79,7 +78,6 @@ function Users() {
   }
 
   function deleteUser(event){
-    console.log("delete ",event);
     //router.push("/home/users/"+event);
     const usersFilter = users.filter(item => item.id != event);
     setUsers(usersFilter);
@@ -118,7 +116,6 @@ function Users() {
   }
 
   function orderByColum(column){
-    console.log("type column",column);
     let copyData = [...users]
     setTypeOrder(!typeOrder);
     if(column == "id"){
