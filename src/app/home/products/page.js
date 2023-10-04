@@ -114,7 +114,6 @@ function Products() {
   
   return (
     <div>
-        <p className='text-white'>Products</p>
         <Table title={'Products'} data={products} columns={columns} actions={actions} add={openAddProduct} show={openShowProduct} deleteI={deleteProduct} reload={reloadProducts} orderByColum={orderByColum}></Table>
 
     </div>
