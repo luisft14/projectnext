@@ -52,9 +52,9 @@ function Users() {
 
     async function getColumns(){
       let columns = [
-        {value:'id',name:'Id'},
+        {value:'id',name:'Id',filter:true},
         {value:'username',name:'User Name'},
-        {value:'email',name:'Email'},
+        {value:'email',name:'Email',filter:true},
         {value:'name',name:'Firs Name'},
         {value:'lastname',name:'Last Name'},
       ];
@@ -115,10 +115,22 @@ function Users() {
 
     setUsers(filterData);
   }
+
+  function orderByColum(column){
+    let copyData = [...users]
+    console.log("como llego ",users);
+    console.log("como llego copyData",copyData);
+
+    // 
+    let ordenado = copyData.sort((a,b)=>b.id-a.id)
+    console.log("modificado ordenado",ordenado);
+    setUsers([...ordenado]);
+    console.log("modificado dataTable",users);
+  }
   
   return (
     <div>
-        <Table title={'Users'} data={users} columns={columns} actions={actions} add={openAddUser} show={openShowUser} deleteI={deleteUser} reload={reloadUsers}></Table>
+        <Table title={'Users'} data={users} columns={columns} actions={actions} add={openAddUser} show={openShowUser} deleteI={deleteUser} reload={reloadUsers} orderByColum={orderByColum}></Table>
     </div>
   )
 }

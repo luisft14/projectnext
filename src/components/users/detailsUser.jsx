@@ -43,8 +43,8 @@ function DetailsUserForm({ title, newUser, data }) {
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="userName"
-                id="userName"
+                name="username"
+                id="username"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
@@ -52,7 +52,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 value={dataForm?.username || ""}
               />
               <label
-                htmlFor="userName"
+                htmlFor="username"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 User Name
@@ -107,7 +107,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 placeholder=" "
                 required
                 onChange={handleChange}
-                value={dataForm?.password || ""}
+                value={dataForm?.passwordConfirm || ""}
 
               />
               <label
@@ -122,17 +122,17 @@ function DetailsUserForm({ title, newUser, data }) {
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="firstName"
-                id="firstName"
+                name="firstname"
+                id="firstname"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
                 onChange={handleChange}
-                value={dataForm?.name?.firstname || ""}
+                value={dataForm?.firstname || ""}
 
               />
               <label
-                htmlFor="firstName"
+                htmlFor="firstname"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 First name
@@ -141,17 +141,17 @@ function DetailsUserForm({ title, newUser, data }) {
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="lastName"
-                id="lastName"
+                name="lastname"
+                id="lastname"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 required
                 onChange={handleChange}
-                value={dataForm?.name?.lastname || ""}
+                value={dataForm?.lastname || ""}
 
               />
               <label
-                htmlFor="lastName"
+                htmlFor="lastname"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Last name
@@ -174,7 +174,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
-                value={dataForm?.address?.city || ""}
+                value={dataForm?.city || ""}
 
               />
               <label
@@ -192,7 +192,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
-                value={dataForm?.address?.street || ""}
+                value={dataForm?.street || ""}
 
               />
               <label
@@ -212,7 +212,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
-                value={dataForm?.address?.number || ""}
+                value={dataForm?.number || ""}
 
               />
               <label
@@ -230,7 +230,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
-                value={dataForm?.address?.zipcode || ""}
+                value={dataForm?.zipcode || ""}
 
               />
               <label
@@ -245,16 +245,16 @@ function DetailsUserForm({ title, newUser, data }) {
             <div className="relative z-0 w-full mb-6 group">
               <input
                 type="text"
-                name="latitude"
-                id="latitude"
+                name="lat"
+                id="lat"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
-                value={dataForm?.address?.geolocation?.lat || ""}
+                value={dataForm?.lat || ""}
 
               />
               <label
-                htmlFor="latitude"
+                htmlFor="lat"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Latitude
@@ -268,7 +268,7 @@ function DetailsUserForm({ title, newUser, data }) {
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
-                value={dataForm?.address?.geolocation?.long || ""}
+                value={dataForm?.long || ""}
 
               />
               <label
@@ -291,8 +291,8 @@ function DetailsUserForm({ title, newUser, data }) {
               <input
                 type="tel"
                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                name="floating_phone"
-                id="floating_phone"
+                name="phone"
+                id="phone"
                 className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" "
                 onChange={handleChange}
@@ -300,7 +300,7 @@ function DetailsUserForm({ title, newUser, data }) {
 
               />
               <label
-                htmlFor="floating_phone"
+                htmlFor="phone"
                 className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 Phone number (123-456-7890)

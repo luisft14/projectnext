@@ -1,72 +1,80 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import DetailsUserForm from "@/components/users/detailsUser";
-import { POST } from "@/app/api/users/route";
-import { GETBYID } from "@/app/api/users/route";
-import { useUser } from "@/context/contextUsers";
+import { POST } from "@/app/api/products/route";
+import { GETBYID } from "@/app/api/products/route";
+import { UPDATE } from "@/app/api/products/route";
+import { useProduct } from "@/context/contextProducts";
 import {useRouter} from "next/navigation"
+import ProductsForm from "@/components/products/ProductsForm";
 
 function DetailsProduct({ params }) {
   
   const [title, setTitle] = useState("New Product");
   const [formData, setFormData] = useState([]);
-  //const {addUser} = useUser();
+  const {addProduct,putProduct} = useProduct();
   const router = useRouter();
 
 
   useEffect(() => {
     if (parseInt(params.id) > 0) {
       setTitle("Details Product");
-      getUser();
+      getProduct();
 
     }
-    async function getUser(){
-      const dataUser = await  GETBYID(params.id);
-      setFormData(dataUser);
-      console.log("usuario encontrado ",dataUser);
+    async function getProduct(){
+      const dataProduct = await  GETBYID(params.id);
+      setFormData(dataProduct);
+      console.log("producto encontrado ",dataProduct);
     }
 
    
   }, []);
 
-  async function newUser(data) {
+
+  async function newProduct(data) {
+    
     let payload = {
-      email: data.email,
-      username: data.userName,
-      password: data.password,
-      name: {
-        firstname: data.firstName,
-        lastname: data.lastName,
-      },
-      address: {
-        city: data.city ?? '',
-        street: data.street ?? '',
-        number: data.number ?? '',
-        zipcode: data.zipcode ?? '',
-        geolocation: {
-          lat: data.latitude ?? '',
-          long: data.long ?? '',
-        },
-      },
-      phone: data.number ?? '',
+        title: data.title,
+        price: data.price,
+        description: data.description,
+        image: data.image,
+        category: data.category
     };
     const dataPost = await POST(payload);
-    
-    let dataUser = {
-      ...payload,
-      id:dataPost.id
-    }
-    addUser(dataUser);
+    if(!dataPost){
+        alert('Failed create Product');
+    }else{
 
-    console.log("agregado",dataPost);
-    router.push("/home/users");
+        let dataProduct = {
+          ...payload,
+          id:dataPost.id
+        }
+    
+        addProduct(dataProduct);
+    
+        console.log("agregado",dataPost);
+        router.push("/home/products");
+    }
+
+  }
+
+  async function updateProduct(data){
+    console.log("data update product",data);
+    const dataUpdate =  await UPDATE(data);
+    if(!dataUpdate){
+        alert("Failed update product");
+    }else{
+        console.log("update",dataUpdate);
+        //putProduct(dataUpdate);
+        router.push("/home/products");
+    }
 
   }
 
   return (
     <div>
-      <DetailsUserForm title={title} newUser={newUser} data={formData}></DetailsUserForm>
+      <ProductsForm title={title} newProduct={newProduct}  data={formData} updateProduct={updateProduct}></ProductsForm>
     </div>
   );
 }

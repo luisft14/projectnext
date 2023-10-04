@@ -15,8 +15,8 @@ function Home() {
     }, [])
     
   return (
-    <div>
-     
+    <div className="aling-items-center">
+     <h2 className="text-white">WELCOME</h2>
     </div>
   )
 }

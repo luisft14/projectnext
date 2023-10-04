@@ -13,7 +13,6 @@ export const UserProvider = ({ children }) => {
   const [dataUsers, setDataUsers] = useState([]);
 
   const addUser = (data) => {
-    console.log("data recibida context", data);
     setDataUsers([
       ...dataUsers,data
     ]);
