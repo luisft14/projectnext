@@ -12,6 +12,7 @@ function Users() {
   const [users, setUsers] = useState([]);
   const [columns, setColums] = useState([]);
   const [actions, setActions] = useState(['Details','Edit','Delete']);
+  const [typeOrder, setTypeOrder] = useState(false);
   const {dataUsers} = useUser();
 
   useEffect(() => {
@@ -117,15 +118,31 @@ function Users() {
   }
 
   function orderByColum(column){
+    console.log("type column",column);
     let copyData = [...users]
-    console.log("como llego ",users);
-    console.log("como llego copyData",copyData);
+    setTypeOrder(!typeOrder);
+    if(column == "id"){
+      if(!typeOrder){
 
-    // 
-    let ordenado = copyData.sort((a,b)=>b.id-a.id)
-    console.log("modificado ordenado",ordenado);
-    setUsers([...ordenado]);
-    console.log("modificado dataTable",users);
+        let ordenado = copyData.sort((a,b)=>b.id-a.id);
+        setUsers([...ordenado]);
+      }else{
+        let ordenado = copyData.sort((a,b)=>a.id-b.id);
+        setUsers([...ordenado]);
+      }
+      
+    }else{
+
+      if(!typeOrder){        
+        let ordenado =  copyData.sort((a, b) => b[column].localeCompare(a[column]));
+        setUsers([...ordenado]);
+      }else{
+        let ordenado =  copyData.sort((a, b) => a[column].localeCompare(b[column]));
+        setUsers([...ordenado]);
+      }
+
+    }
+    
   }
   
   return (

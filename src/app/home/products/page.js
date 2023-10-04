@@ -13,6 +13,7 @@ function Products() {
   const [products, setProducts] = useState([]);
   const [columns, setColums] = useState([]);
   const [actions, setActions] = useState(['Details','Edit','Delete']);
+  const [typeOrder, setTypeOrder] = useState(false);
   const {dataProducts} = useProduct();
 
 
@@ -95,11 +96,27 @@ function Products() {
     })
     setProducts(filterData);
   }
+
+  function orderByColum(column){
+
+    let copyData = [...products]
+    setTypeOrder(!typeOrder);
+      if(!typeOrder){
+
+        let ordenado = copyData.sort((a,b)=>b[column]-a[column]);
+        setProducts([...ordenado]);
+      }else{
+        let ordenado = copyData.sort((a,b)=>a[column]-b[column]);
+        setProducts([...ordenado]);
+      }
+    
+    
+  }
   
   return (
     <div>
         <p className='text-white'>Products</p>
-        <Table title={'Products'} data={products} columns={columns} actions={actions} add={openAddProduct} show={openShowProduct} deleteI={deleteProduct} reload={reloadProducts}></Table>
+        <Table title={'Products'} data={products} columns={columns} actions={actions} add={openAddProduct} show={openShowProduct} deleteI={deleteProduct} reload={reloadProducts} orderByColum={orderByColum}></Table>
 
     </div>
   )
